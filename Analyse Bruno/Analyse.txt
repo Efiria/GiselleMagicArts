@@ -1,0 +1,69 @@
+
+-Les dates réferentielles
+
+	Mercredi 29 mars 16h
+	Jeudi 30 mars 12h
+	Mardi 4 avril
+	Jeudi 6 avril
+	Vendredi 7 avril 9h-10h
+
+
+- Representation de la base de données
+
+	MCD
+	MLD
+	MPD
+
+
+- Representation des Flux
+
+	Acteurs et liens
+	 -> Digramme de flux
+
+
+- Matrice des dépandances fonctionnelles
+
+
+- Dictionnaire de données
+
+
+- Merise
+	
+
+- Requete SQL
+
+	Procédures Stockées
+		Creer la base
+			Fichier séparé
+				Script de Remplissage
+
+		Afficher Stock
+			Mise a jour reception Ingrédients
+
+		Consulter commandes Client
+
+		Supprimier Ingrédient expirer
+			Automatisation ?
+
+		Envoi commande
+			Mise a jour Stock
+
+	Soumettre Requete 
+
+		Ajout recette
+			Valider
+			Supprimer
+
+	Recherche
+
+		Potions / Onguents realisable avec ingrédient
+
+		Couple Potions / Onguents utilsant même ingrédient
+
+		Potions realisable avec un diluant précis
+
+		La liste des potions classée par température de préparation
+
+		La comparaison entre  prix de vente potion et le total du prix des ingrédients (et diluant) nécessaires à sa réalisation
+
+		Le nombre moyen d’ingrédients utilisés pour fabriquer une potion (ou onguent)
