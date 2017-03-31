@@ -1,7 +1,7 @@
 --
 -- Contenu table Onguent
 --
-
+START TRANSACTION;
 INSERT INTO `Onguent` (`NomOnguent`,`Ingredient1`,`Ingredient2`,`Ingredient3`,`Ingredient4`,`Ingredient5`,`PrixOnguent`,`Inventeur`) VALUES
 ('Onguent d arme magique','Sardonyx','Branche de sauge maléfique','Epée longue maudite','','','313','Alucard'),
 ('Onguent de bénédiction d arme','Perle argentée','Epée courte','Chemise de maille','','','131','Dr Strange'),
@@ -18,3 +18,4 @@ INSERT INTO `Onguent` (`NomOnguent`,`Ingredient1`,`Ingredient2`,`Ingredient3`,`I
 ('Onguent de pattes d araignée','Chrysabéryl','Cheveux de sorcières','Hache de guerre naine maudite','','','313','Eliar Kelliuic h'),
 ('Onguent de délivrance de la paralysie','Spadumène','Onguent d intemporalité','Harnais','','','1163','Severus Rogue'),
 ('Onguent de détection faussée','Grenat violet','Parchemin divin','Pic de guerre léger maudite','','','525','Saruman');
+COMMIT;
