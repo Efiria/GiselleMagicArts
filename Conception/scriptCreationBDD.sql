@@ -68,7 +68,7 @@ CREATE TABLE Stock(
         Fraicheur          Numeric ,
         QuantiteIngredient Numeric ,
         TypeRecipient      Char (25) ,
-        QuantiteRecipent   Numeric ,
+        QuantiteRecipient   Numeric ,
         NomPotion          Char (25) ,
         QuantitePotion     Numeric ,
         NomOnguent         Char (25) ,
@@ -87,7 +87,7 @@ CREATE TABLE Commande(
         PrenomClient        Char (25) ,
         AdresseClient       Char (25) ,
         NomPotion           Char (25) ,
-        TypeRecipent        Char (25) ,
+        TypeRecipient        Char (25) ,
         QuantitePotion      Numeric ,
         NomOnguent          Char (25) ,
         QuantiteOnguent     Numeric ,
@@ -100,15 +100,15 @@ CREATE TABLE Commande(
 
 
 #------------------------------------------------------------
-# Table: Recipent
+# Table: Recipient
 #------------------------------------------------------------
 
-CREATE TABLE Recipent(
-        IDrecipent   int (11) Auto_increment  NOT NULL ,
-        TypeRecipent Char (25) ,
-        PrixRecipent Numeric ,
+CREATE TABLE Recipient(
+        IDrecipient   int (11) Auto_increment  NOT NULL ,
+        TypeRecipient Char (25) ,
+        PrixRecipient Numeric ,
         Volume       Numeric ,
-        PRIMARY KEY (IDrecipent )
+        PRIMARY KEY (IDrecipient )
 )ENGINE=InnoDB;
 
 
