@@ -125,4 +125,17 @@ CREATE TABLE Client(
         PRIMARY KEY (IDclient )
 )ENGINE=InnoDB;
 
+
+#------------------------------------------------------------
+# Table: Fournisseur
+#------------------------------------------------------------
+
+CREATE TABLE Fournisseur(
+        IDfournisseur  int (11) Auto_increment  NOT NULL ,
+        NomFournisseur Char (25) ,
+        IngredientEnvoyer Char (25) ,
+        DateEnvoi      Date ,
+        PRIMARY KEY (IDfournisseur )
+)ENGINE=InnoDB;
+
 ALTER TABLE Client ADD CONSTRAINT FK_Client_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
