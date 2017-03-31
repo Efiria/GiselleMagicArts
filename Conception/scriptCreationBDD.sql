@@ -120,10 +120,10 @@ CREATE TABLE Recipent(
 
 
 #------------------------------------------------------------
-# Table: Cilent
+# Table: Client
 #------------------------------------------------------------
 
-CREATE TABLE Cilent(
+CREATE TABLE Client(
         IDclient      int (11) Auto_increment  NOT NULL ,
         NomClient     Char (25) ,
         PrenomClient  Char (25) ,
@@ -139,4 +139,4 @@ ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDpotion FOREIGN KEY (IDpotion) REFERE
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDonguent FOREIGN KEY (IDonguent) REFERENCES Onguent(IDonguent);
 ALTER TABLE Commande ADD CONSTRAINT FK_Commande_IDStock FOREIGN KEY (IDStock) REFERENCES Stock(IDStock);
-ALTER TABLE Cilent ADD CONSTRAINT FK_Cilent_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
+ALTER TABLE Client ADD CONSTRAINT FK_Client_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
