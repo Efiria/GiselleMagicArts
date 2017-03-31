@@ -107,7 +107,7 @@ CREATE TABLE Recipient(
         IDrecipient   int (11) Auto_increment  NOT NULL ,
         TypeRecipient Char (25) ,
         PrixRecipient Numeric ,
-        Volume       Numeric ,
+        Volume       Float ,
         PRIMARY KEY (IDrecipient )
 )ENGINE=InnoDB;
 
