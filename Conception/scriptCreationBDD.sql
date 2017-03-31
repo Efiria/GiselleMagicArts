@@ -23,7 +23,6 @@ CREATE TABLE Potion(
         Diluant      Char (25) ,
         PrixPotion   Numeric ,
         Inventeur    Char (25) ,
-        IDingredient Int ,
         PRIMARY KEY (IDpotion )
 )ENGINE=InnoDB;
 
@@ -42,7 +41,6 @@ CREATE TABLE Onguent(
         Ingredient5  Char (25) ,
         PrixOnguent  Numeric ,
         Inventeur    Char (25) ,
-        IDingredient Int ,
         PRIMARY KEY (IDonguent )
 )ENGINE=InnoDB;
 
@@ -75,10 +73,6 @@ CREATE TABLE Stock(
         QuantitePotion     Numeric ,
         NomOnguent         Char (25) ,
         QuantiteOnguent    Numeric ,
-        IDrecipent         Int ,
-        IDpotion           Int ,
-        IDingredient       Int ,
-        IDonguent          Int ,
         PRIMARY KEY (IDStock )
 )ENGINE=InnoDB;
 
@@ -101,7 +95,6 @@ CREATE TABLE Commande(
         FraicheurIngredient Char (25) ,
         QuantiteIngredient  Numeric ,
         PrixTotal           Numeric ,
-        IDStock             Int ,
         PRIMARY KEY (IDcommande )
 )ENGINE=InnoDB;
 
@@ -132,11 +125,4 @@ CREATE TABLE Client(
         PRIMARY KEY (IDclient )
 )ENGINE=InnoDB;
 
-ALTER TABLE Potion ADD CONSTRAINT FK_Potion_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
-ALTER TABLE Onguent ADD CONSTRAINT FK_Onguent_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
-ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDrecipent FOREIGN KEY (IDrecipent) REFERENCES Recipent(IDrecipent);
-ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDpotion FOREIGN KEY (IDpotion) REFERENCES Potion(IDpotion);
-ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
-ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDonguent FOREIGN KEY (IDonguent) REFERENCES Onguent(IDonguent);
-ALTER TABLE Commande ADD CONSTRAINT FK_Commande_IDStock FOREIGN KEY (IDStock) REFERENCES Stock(IDStock);
 ALTER TABLE Client ADD CONSTRAINT FK_Client_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
