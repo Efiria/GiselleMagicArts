@@ -26,6 +26,23 @@ CREATE TABLE Potion(
         PRIMARY KEY (IDpotion )
 )ENGINE=InnoDB;
 
+CREATE TABLE PotionAttente(
+        IDpotion     int (11) Auto_increment  NOT NULL ,
+        NomPotion    Char (25) ,
+        Ingredient1  Char (25) ,
+        Fraicheur1   Char (25) ,
+        Ingredient2  Char (25) ,
+        Fraicheur2   Char (25) ,
+        Ingredient3  Char (25) ,
+        Fraicheur3   Char (25) ,
+        Ingredient4  Char (25) ,
+        Fraicheur4   Char (25) ,
+        Ingredient5  Char (25) ,
+        Fraicheur5   Char (25) ,
+        Diluant      Char (25) ,
+        Inventeur    Char (25) ,
+        PRIMARY KEY (IDpotion )
+)ENGINE=InnoDB;
 
 #------------------------------------------------------------
 # Table: Onguent
