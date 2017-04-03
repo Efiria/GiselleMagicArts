@@ -39,21 +39,21 @@ VALUES
 ('Pot','34','5'),
 ('Amphore','70','5'),
 ('Fût','126','10');
-INSERT INTO potion (NomPotion, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, PrixPotion, Diluant)
+INSERT INTO potion (NomPotion, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, PrixPotion, Diluant, Temperature, Inventeur)
 VALUES 
-('Huile d arme magique', 'Sardonyx','Branche de sauge maléfique','Epée longue maudite','','', '121','Vin'),
-('Huile de bénédiction d arme', 'Perle dorée', 'Épée courte', 'Chemise de maille', '','', '154','Jus de Fruit'),
-('Huile de gourdin magique', 'Perle dorée', 'Épée bâtarde', 'Carreaux', '','', '134','Eau'),
-('Huile de ténèbres', 'Quartz bleu', 'Ongles de lutin', 'Harnois', '','', '123','Vodka'),
-('Potion de bouclier de la foi', 'Lapis-Lazuli', 'Épée courte', 'Armure de cuir cloutée de maître', '','', '245','Eau'),
-('Potion de flou', 'Néphrite', 'Écu en acier', 'Cadenas simple', '','', '124','Vin'),
-('Potion de protection contre le bien', 'Grenat rouge', 'Écu en acier', 'Menottes de qualité suppérieure','', 'Elixir secret', '25','Jus de Pomme'),
-('Potion d agrandissement', 'Perle noire', 'Potion de sagesse du hibou', 'Harnois', '','', '758','Eau'),
-('Potion d invisibilité', 'Perle noire', 'Potion de sagesse du hibou', 'Epée longue de maître', '','', '456','Jus de Fruit'),
-('Potion d endurance de l ours', 'Alexandrite', 'Élixir de nage', 'Ecu en ébénite', '','', '281','Vin'),
-('Potion d endurance aux énergies destructives', 'Spodumène', 'Élixir de nage', 'Grande hache de maître', '','', '445','Vodka'),
-('Potion de protection contre les projectiles', 'Pierre de lune', 'Branches de sauge maléfiques', 'Pierre(s) à tonnerre', 'Poudre secrète','', '678','Martini'),
-('Potion de ruse du renard', 'Sardonyx', 'Anneau du bélier', 'Chemise de maille', '','', '98','Grenadine'),
-('Potion de saut', 'Spodumène', 'Baguette de sagesse du hibou', 'Antidote', '','', '36','Eau Salée'),
-('Potion de protection contre le chaos', 'Ivoire', 'Baguette de sagesse du hibou', 'Ecu en ébénite', '','', '531','Eau Bénite');
+('Huile d arme magique', 'Sardonyx','Branche de sauge maléfique','Epée longue maudite','','', '121','Vin','-100','Merlin'),
+('Huile de bénédiction d arme', 'Perle dorée', 'Épée courte', 'Chemise de maille', '','', '154','Jus de Fruit','32','Lexandre'),
+('Huile de gourdin magique', 'Perle dorée', 'Épée bâtarde', 'Carreaux', '','', '134','Eau','45','Panoramix'),
+('Huile de ténèbres', 'Quartz bleu', 'Ongles de lutin', 'Harnois', '','', '123','Vodka','0','Gandalf'),
+('Potion de bouclier de la foi', 'Lapis-Lazuli', 'Épée courte', 'Armure de cuir cloutée de maître', '','', '245','Eau','489','Merlin'),
+('Potion de flou', 'Néphrite', 'Écu en acier', 'Cadenas simple', '','', '124','Vin','265',''),
+('Potion de protection contre le bien', 'Grenat rouge', 'Écu en acier', 'Menottes de qualité suppérieure','', 'Elixir secret', '25','Jus de Pomme','258','Merlin'),
+('Potion d agrandissement', 'Perle noire', 'Potion de sagesse du hibou', 'Harnois', '','', '758','Eau','',''),
+('Potion d invisibilité', 'Perle noire', 'Potion de sagesse du hibou', 'Epée longue de maître', '','', '456','Jus de Fruit','','Panoramix'),
+('Potion d endurance de l ours', 'Alexandrite', 'Élixir de nage', 'Ecu en ébénite', '','', '281','Vin','58','Magicien dOz'),
+('Potion d endurance aux énergies destructives', 'Spodumène', 'Élixir de nage', 'Grande hache de maître', '','', '445','Vodka','','Gandalf'),
+('Potion de protection contre les projectiles', 'Pierre de lune', 'Branches de sauge maléfiques', 'Pierre(s) à tonnerre', 'Poudre secrète','', '678','Martini','32','Merlin'),
+('Potion de ruse du renard', 'Sardonyx', 'Anneau du bélier', 'Chemise de maille', '','', '98','Grenadine','258','Panoramix'),
+('Potion de saut', 'Spodumène', 'Baguette de sagesse du hibou', 'Antidote', '','', '36','Eau Salée','42','Marco'),
+('Potion de protection contre le chaos', 'Ivoire', 'Baguette de sagesse du hibou', 'Ecu en ébénite', '','', '531','Eau Bénite','659','Nobru');
 COMMIT;
