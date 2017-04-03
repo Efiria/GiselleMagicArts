@@ -41,7 +41,7 @@ VALUES
 ('Fût','126','10');
 INSERT INTO potion (NomPotion, Ingredient1, Ingredient2, Ingredient3, Ingredient4, PrixPotion)
 VALUES 
-('Huile d arme magique', 'Sardonyx', 'Branches de sauge maléfiques', 'Epée longue de maître', '', '121'),
+('Huile d arme magique', 'Sardonyx','Branche de sauge maléfique','Epée longue maudite','', '121'),
 ('Huile de bénédiction d arme', 'Perle dorée', 'Épée courte', 'Chemise de maille', '', '154'),
 ('Huile de gourdin magique', 'Perle dorée', 'Épée bâtarde', 'Carreaux', '', '134'),
 ('Huile de ténèbres', 'Quartz bleu', 'Ongles de lutin', 'Harnois', '', '123'),
