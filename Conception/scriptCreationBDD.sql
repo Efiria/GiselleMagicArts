@@ -9,38 +9,38 @@
 
 CREATE TABLE Potion(
         IDpotion     int (11) Auto_increment  NOT NULL ,
-        NomPotion    Char (25) ,
-        Ingredient1  Char (25) ,
-        Fraicheur1   Char (25) ,
-        Ingredient2  Char (25) ,
-        Fraicheur2   Char (25) ,
-        Ingredient3  Char (25) ,
-        Fraicheur3   Char (25) ,
-        Ingredient4  Char (25) ,
-        Fraicheur4   Char (25) ,
-        Ingredient5  Char (25) ,
-        Fraicheur5   Char (25) ,
-        Diluant      Char (25) ,
+        NomPotion    Char (40) ,
+        Ingredient1  Char (40) ,
+        Fraicheur1   Char (40) ,
+        Ingredient2  Char (40) ,
+        Fraicheur2   Char (40) ,
+        Ingredient3  Char (40) ,
+        Fraicheur3   Char (40) ,
+        Ingredient4  Char (40) ,
+        Fraicheur4   Char (40) ,
+        Ingredient5  Char (40) ,
+        Fraicheur5   Char (40) ,
+        Diluant      Char (40) ,
         PrixPotion   Numeric ,
-        Inventeur    Char (25) ,
+        Inventeur    Char (40) ,
         PRIMARY KEY (IDpotion )
 )ENGINE=InnoDB;
 
 CREATE TABLE PotionAttente(
         IDpotion     int (11) Auto_increment  NOT NULL ,
-        NomPotion    Char (25) ,
-        Ingredient1  Char (25) ,
-        Fraicheur1   Char (25) ,
-        Ingredient2  Char (25) ,
-        Fraicheur2   Char (25) ,
-        Ingredient3  Char (25) ,
-        Fraicheur3   Char (25) ,
-        Ingredient4  Char (25) ,
-        Fraicheur4   Char (25) ,
-        Ingredient5  Char (25) ,
-        Fraicheur5   Char (25) ,
-        Diluant      Char (25) ,
-        Inventeur    Char (25) ,
+        NomPotion    Char (40) ,
+        Ingredient1  Char (40) ,
+        Fraicheur1   Char (40) ,
+        Ingredient2  Char (40) ,
+        Fraicheur2   Char (40) ,
+        Ingredient3  Char (40) ,
+        Fraicheur3   Char (40) ,
+        Ingredient4  Char (40) ,
+        Fraicheur4   Char (40) ,
+        Ingredient5  Char (40) ,
+        Fraicheur5   Char (40) ,
+        Diluant      Char (40) ,
+        Inventeur    Char (40) ,
         PRIMARY KEY (IDpotion )
 )ENGINE=InnoDB;
 
@@ -50,14 +50,14 @@ CREATE TABLE PotionAttente(
 
 CREATE TABLE Onguent(
         IDonguent    int (11) Auto_increment  NOT NULL ,
-        NomOnguent   Char (25) ,
-        Ingredient1  Char (25) ,
-        Ingredient2  Char (25) ,
-        Ingredient3  Char (25) ,
-        Ingredient4  Char (25) ,
-        Ingredient5  Char (25) ,
+        NomOnguent   Char (40) ,
+        Ingredient1  Char (40) ,
+        Ingredient2  Char (40) ,
+        Ingredient3  Char (40) ,
+        Ingredient4  Char (40) ,
+        Ingredient5  Char (40) ,
         PrixOnguent  Numeric ,
-        Inventeur    Char (25) ,
+        Inventeur    Char (40) ,
         PRIMARY KEY (IDonguent )
 )ENGINE=InnoDB;
 
@@ -68,7 +68,7 @@ CREATE TABLE Onguent(
 
 CREATE TABLE Ingredient(
         IDingredient   int (11) Auto_increment  NOT NULL ,
-        NomIngredient  Char (25) ,
+        NomIngredient  Char (40) ,
         Fraicheur      Numeric ,
         PrixIngredient Numeric ,
         PRIMARY KEY (IDingredient )
@@ -81,14 +81,14 @@ CREATE TABLE Ingredient(
 
 CREATE TABLE Stock(
         IDStock            int (11) Auto_increment  NOT NULL ,
-        NomIngredient      Char (25) ,
+        NomIngredient      Char (40) ,
         Fraicheur          Numeric ,
         QuantiteIngredient Numeric ,
-        TypeRecipient      Char (25) ,
+        TypeRecipient      Char (40) ,
         QuantiteRecipient   Numeric ,
-        NomPotion          Char (25) ,
+        NomPotion          Char (40) ,
         QuantitePotion     Numeric ,
-        NomOnguent         Char (25) ,
+        NomOnguent         Char (40) ,
         QuantiteOnguent    Numeric ,
         PRIMARY KEY (IDStock )
 )ENGINE=InnoDB;
@@ -100,16 +100,16 @@ CREATE TABLE Stock(
 
 CREATE TABLE Commande(
         IDcommande          int (11) Auto_increment  NOT NULL ,
-        NomClient           Char (25) ,
-        PrenomClient        Char (25) ,
-        AdresseClient       Char (25) ,
-        NomPotion           Char (25) ,
-        TypeRecipient        Char (25) ,
+        NomClient           Char (40) ,
+        PrenomClient        Char (40) ,
+        AdresseClient       Char (40) ,
+        NomPotion           Char (40) ,
+        TypeRecipient        Char (40) ,
         QuantitePotion      Numeric ,
-        NomOnguent          Char (25) ,
+        NomOnguent          Char (40) ,
         QuantiteOnguent     Numeric ,
-        NomIngredient       Char (25) ,
-        FraicheurIngredient Char (25) ,
+        NomIngredient       Char (40) ,
+        FraicheurIngredient Char (40) ,
         QuantiteIngredient  Numeric ,
         PrixTotal           Numeric ,
         PRIMARY KEY (IDcommande )
@@ -122,7 +122,7 @@ CREATE TABLE Commande(
 
 CREATE TABLE Recipient(
         IDrecipient   int (11) Auto_increment  NOT NULL ,
-        TypeRecipient Char (25) ,
+        TypeRecipient Char (40) ,
         PrixRecipient Numeric ,
         Volume       Float ,
         PRIMARY KEY (IDrecipient )
@@ -135,9 +135,9 @@ CREATE TABLE Recipient(
 
 CREATE TABLE Client(
         IDclient      int (11) Auto_increment  NOT NULL ,
-        NomClient     Char (25) ,
-        PrenomClient  Char (25) ,
-        AdresseClient Char (25) ,
+        NomClient     Char (40) ,
+        PrenomClient  Char (40) ,
+        AdresseClient Char (40) ,
         IDcommande    Int ,
         PRIMARY KEY (IDclient )
 )ENGINE=InnoDB;
@@ -149,8 +149,8 @@ CREATE TABLE Client(
 
 CREATE TABLE Fournisseur(
         IDfournisseur  int (11) Auto_increment  NOT NULL ,
-        NomFournisseur Char (25) ,
-        IngredientEnvoyer Char (25) ,
+        NomFournisseur Char (40) ,
+        IngredientEnvoyer Char (40) ,
         DateEnvoi      Date ,
         PRIMARY KEY (IDfournisseur )
 )ENGINE=InnoDB;

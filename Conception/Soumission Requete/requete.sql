@@ -10,7 +10,15 @@ DELIMITER |
 DROP PROCEDURE IF EXISTS Validation_Potion |
 CREATE PROCEDURE Validation_Potion(IN Nom_Potion CHAR(32), IN Validation char (32))
 BEGIN
-	if Validation = 'Valider'
+	IF Validation = 'Valider'
 		BEGIN 
+			INSERT INTO potionattente(NomPotion, Ingredient1, Fraicheur1, Ingredient2, Fraicheur2, Ingredient3, Fraicheur3, Ingredient4, Fraicheur4, Ingredient5, Fraicheur5, Diluant, Inventeur)
+			VALUES (Nom_Potion, nb_Ingredient1, nb_Fraicheur1, nb_Ingredient2, nb_Ingredient2, nb_Ingredient3, nb_Fraicheur3, nb_Ingredient4, nb_Fraicheur4, nb_Ingredient5, nb_Fraicheur5, nb_Diluant, nb_Inventeur);
+			WHERE Nom_Potion = NomPotion;
+		END |
 
+	ELSE
+		BEGIN
+			
+		END |
 END |
