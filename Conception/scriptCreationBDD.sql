@@ -6,7 +6,7 @@
 #------------------------------------------------------------
 # Table: Potion
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Potion;
 CREATE TABLE Potion(
         IDpotion     int (11) Auto_increment  NOT NULL ,
         NomPotion    Char (40) ,
@@ -26,6 +26,7 @@ CREATE TABLE Potion(
         PRIMARY KEY (IDpotion )
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS PotionAttente;
 CREATE TABLE PotionAttente(
         IDpotion     int (11) Auto_increment  NOT NULL ,
         NomPotion    Char (40) ,
@@ -48,6 +49,7 @@ CREATE TABLE PotionAttente(
 # Table: Onguent
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS Onguent;
 CREATE TABLE Onguent(
         IDonguent    int (11) Auto_increment  NOT NULL ,
         NomOnguent   Char (40) ,
@@ -66,6 +68,7 @@ CREATE TABLE Onguent(
 # Table: Ingredient
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS Ingredient;
 CREATE TABLE Ingredient(
         IDingredient   int (11) Auto_increment  NOT NULL ,
         NomIngredient  Char (40) ,
@@ -79,6 +82,7 @@ CREATE TABLE Ingredient(
 # Table: Stock
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS Stock;
 CREATE TABLE Stock(
         IDStock            int (11) Auto_increment  NOT NULL ,
         NomIngredient      Char (40) ,
@@ -95,9 +99,25 @@ CREATE TABLE Stock(
 
 
 #------------------------------------------------------------
+# Table: Client
+#------------------------------------------------------------
+
+DROP TABLE IF EXISTS Client;
+CREATE TABLE Client(
+        IDclient      int (11) Auto_increment  NOT NULL ,
+        NomClient     Char (40) ,
+        PrenomClient  Char (40) ,
+        AdresseClient Char (40) ,
+        IDcommande    Int ,
+        PRIMARY KEY (IDclient )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: Commande
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS Commande;
 CREATE TABLE Commande(
         IDcommande          int (11) Auto_increment  NOT NULL ,
         NomClient           Char (40) ,
@@ -112,6 +132,7 @@ CREATE TABLE Commande(
         FraicheurIngredient Char (40) ,
         QuantiteIngredient  Numeric ,
         PrixTotal           Numeric ,
+		Status Char (40) ,
         PRIMARY KEY (IDcommande )
 )ENGINE=InnoDB;
 
@@ -120,6 +141,7 @@ CREATE TABLE Commande(
 # Table: Recipient
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS Recipient;
 CREATE TABLE Recipient(
         IDrecipient   int (11) Auto_increment  NOT NULL ,
         TypeRecipient Char (40) ,
@@ -130,23 +152,10 @@ CREATE TABLE Recipient(
 
 
 #------------------------------------------------------------
-# Table: Client
-#------------------------------------------------------------
-
-CREATE TABLE Client(
-        IDclient      int (11) Auto_increment  NOT NULL ,
-        NomClient     Char (40) ,
-        PrenomClient  Char (40) ,
-        AdresseClient Char (40) ,
-        IDcommande    Int ,
-        PRIMARY KEY (IDclient )
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Fournisseur
 #------------------------------------------------------------
 
+DROP TABLE IF EXISTS Fournisseur;
 CREATE TABLE Fournisseur(
         IDfournisseur  int (11) Auto_increment  NOT NULL ,
         NomFournisseur Char (40) ,
