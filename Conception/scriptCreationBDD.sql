@@ -24,6 +24,8 @@ CREATE TABLE PotionAttente(
 )ENGINE=InnoDB;
 
 
+
+
 #------------------------------------------------------------
 # Table: Potion
 #------------------------------------------------------------
@@ -104,6 +106,7 @@ CREATE TABLE Commande(
         NomIngredient       Char (25) ,
         FraicheurIngredient Char (25) ,
         QuantiteIngredient  Numeric ,
+        StatusCommande      Char (25) ,
         PrixTotal           Numeric ,
         IDStock             Int ,
         PRIMARY KEY (IDcommande )
