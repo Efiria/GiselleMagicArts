@@ -1,37 +1,27 @@
 START TRANSACTION;
 INSERT INTO ingredient (NomIngredient, Fraicheur, PrixIngredient) 
-VALUES 
-('Aigue-marine','56','20'),
-('Alexandrite','464','20'),
-('Azurite','63','15'),
-('Chrysobéryl','74','14'),
-('Grenat rouge','12','15'),
-('Grenat violet','66','12'),
-('Irtios','64','13'),
-('Ivoire','984','12'),
-('Lapis-Lazuli','44','16'),
-('Néphrite','498','13'),
-('Orprase','49','12'),
-('Péridot','16','15'),
-('Perle dorée','56','18'),
+VALUES ('Sardonyx','56','20'),
+('Branche de sauge maléfique','464','20'),
+('Epée longue de maître','63','15'),
+('Epée courte','74','14'),
+('Chemise de maille','12','15'),
+('Epée bâtarde','66','12'),
+('Carreaux','64','13'),
+('Bottes de sept lieues','984','12'),
+('Arbalète légère de maître','44','16'),
+('Quartz bleu','56','18'),
+('Ongle de lutin','56','18'),
+('Harnois','56','18'),
 ('Perle noire','748','12');
-INSERT INTO Onguent (NomOnguent, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, PrixOnguent, Inventeur) 
-VALUES
-('Onguent d arme magique','Sardonyx','Branche de sauge maléfique','Epée longue maudite','','','313','Alucard'),
-('Onguent de bénédiction d arme','Perle argentée','Epée courte','Chemise de maille','','','131','Dr Strange'),
-('Onguent de gourdin magique','Perle argentée','Epée bâtarde','Carreaux','','','381','Saruman'),
-('Onguent de pierre magique','Sardonyx','Botte de sept lieues','Arbalète légère maudite','','','335','Alucard'),
-('Onguent de ténèbres','Quartz rouge','Ongles de lutin','Harnais','','','658','Severus Rogue'),
-('Onguent d agrandissement','Perle noire','Potion de sagesse de hibou','Harnais','','','1115','Alucard'),
-('Onguent d aide','Irtios','Amulette d armure naturelle','Chemise de maille','','','1132',''),
-('Onguent d alignement indétectable','Grenat rouge','Epée courte','Arbalète légère maudite','','','316','Severus Rogue'),
-('Onguent d armure de mage','Grenat violet','Urgrosh nain','Hache de guerre naine maudite','','','123','Dumbledore'),
-('Onguent de bouclier de la foi','Lapis-lazuli','Epée courte','Armure de cuir cloutée maudite','','','336','Dumbledore'),
-('Onguent de protection contre le bien','Grenat rouge','Ecu en titane','menottes de qualité supérieure','Elixir secret','','212','Saruman'),
-('Onguent de protection contree les projectiles','Pierre solaire','Branche de sauge maléfique','Pierre(s) à tonnerre','Poudre secrète','','162','Dumbledore'),
-('Onguent de pattes d araignée','Chrysabéryl','Cheveux de sorcières','Hache de guerre naine maudite','','','313','Eliar Kelliuic h'),
-('Onguent de délivrance de la paralysie','Spadumène','Onguent d intemporalité','Harnais','','','1163','Severus Rogue'),
-('Onguent de détection faussée','Grenat violet','Parchemin divin','Pic de guerre léger maudite','','','525','Saruman');
+
+INSERT INTO Onguent (NomOnguent,PrixOnguent,Inventeur)
+VALUES ('Onguent de bouclier','263','Alucard'),
+('Onguent de ténèbres','485','Saruman'),
+('Huile de gourdin maudite','487','Gandalf'),
+('Huile de pierre maudite','112','Alucard'),
+('Onguent des ténèbres','345','Saruman');
+
+
 INSERT INTO `recipient` (`TypeRecipient`,`PrixRecipient`,`Volume`) 
 VALUES
 ('Fiole','5','1'),
@@ -39,21 +29,31 @@ VALUES
 ('Pot','34','5'),
 ('Amphore','70','5'),
 ('Fût','126','10');
-INSERT INTO potion (NomPotion, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, PrixPotion, Diluant, Temperature, Inventeur)
-VALUES 
-('Huile d arme magique', 'Sardonyx','Branche de sauge maléfique','Epée longue maudite','','', '121','Vin','-100','Merlin'),
-('Huile de bénédiction d arme', 'Perle dorée', 'Épée courte', 'Chemise de maille', '','', '154','Jus de Fruit','32','Lexandre'),
-('Huile de gourdin magique', 'Perle dorée', 'Épée bâtarde', 'Carreaux', '','', '134','Eau','45','Panoramix'),
-('Huile de ténèbres', 'Quartz bleu', 'Ongles de lutin', 'Harnois', '','', '123','Vodka','0','Gandalf'),
-('Potion de bouclier de la foi', 'Lapis-Lazuli', 'Épée courte', 'Armure de cuir cloutée de maître', '','', '245','Eau','489','Merlin'),
-('Potion de flou', 'Néphrite', 'Écu en acier', 'Cadenas simple', '','', '124','Vin','265',''),
-('Potion de protection contre le bien', 'Grenat rouge', 'Écu en acier', 'Menottes de qualité suppérieure','', 'Elixir secret', '25','Jus de Pomme','258','Merlin'),
-('Potion d agrandissement', 'Perle noire', 'Potion de sagesse du hibou', 'Harnois', '','', '758','Eau','',''),
-('Potion d invisibilité', 'Perle noire', 'Potion de sagesse du hibou', 'Epée longue de maître', '','', '456','Jus de Fruit','','Panoramix'),
-('Potion d endurance de l ours', 'Alexandrite', 'Élixir de nage', 'Ecu en ébénite', '','', '281','Vin','58','Magicien dOz'),
-('Potion d endurance aux énergies destructives', 'Spodumène', 'Élixir de nage', 'Grande hache de maître', '','', '445','Vodka','','Gandalf'),
-('Potion de protection contre les projectiles', 'Pierre de lune', 'Branches de sauge maléfiques', 'Pierre(s) à tonnerre', 'Poudre secrète','', '678','Martini','32','Merlin'),
-('Potion de ruse du renard', 'Sardonyx', 'Anneau du bélier', 'Chemise de maille', '','', '98','Grenadine','258','Panoramix'),
-('Potion de saut', 'Spodumène', 'Baguette de sagesse du hibou', 'Antidote', '','', '36','Eau Salée','42','Marco'),
-('Potion de protection contre le chaos', 'Ivoire', 'Baguette de sagesse du hibou', 'Ecu en ébénite', '','', '531','Eau Bénite','659','Nobru');
+
+INSERT INTO potion (NomPotion,Diluant,PrixPotion,Inventeur)
+VALUES ('Potion de bouclier','Vin','474','Marko'),
+('Huile de bénédiction d arme','Jus de Fruit','799','Merlin'),
+('Huile de gourdin magique','Eau','481','Nobru'),
+('Huile de pierre magique','Vin','345','Lexandre'),
+('Potion des ténèbres','Vin','658','MagicLord');
+COMMIT;
+
+START TRANSACTION;
+INSERT INTO onguentingredient (IDingredient,IDonguent)
+VALUES ('1','1'),
+('3','1'),
+('6','1'),
+('1','2'),
+('6','2'),
+('4','2'),
+('13','3'),
+('9','3'),
+('5','3'),
+('6','3'),
+('1','4'),
+('11','4'),
+('10','4'),
+('9','5'),
+('2','5'),
+('7','5');
 COMMIT;
