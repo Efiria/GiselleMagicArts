@@ -3,39 +3,17 @@
 #------------------------------------------------------------
 
 
-DROP TABLE IF EXISTS PotionAttente;
-CREATE TABLE PotionAttente(
-        IDpotion     int (11) Auto_increment  NOT NULL ,
-        NomPotion    Char (50) ,
-        Ingredient1  Char (50) ,
-        Fraicheur1   Char (50) ,
-        Ingredient2  Char (50) ,
-        Fraicheur2   Char (50) ,
-        Ingredient3  Char (50) ,
-        Fraicheur3   Char (50) ,
-        Ingredient4  Char (50) ,
-        Fraicheur4   Char (50) ,
-        Ingredient5  Char (50) ,
-        Fraicheur5   Char (50) ,
-        Diluant      Char (50) ,
-        Temperature  Numeric ,
-        Inventeur    Char (50) ,
-        PRIMARY KEY (IDpotion )
-)ENGINE=InnoDB;
-
-
-
-
 #------------------------------------------------------------
 # Table: Potion
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Potion;
 CREATE TABLE Potion(
         IDpotion   int (11) Auto_increment  NOT NULL ,
-        NomPotion  Char (25) ,
-        Diluant    Char (25) ,
+        NomPotion  Char (50) ,
+        Diluant    Char (50) ,
+        Temperature int(100) ,
         PrixPotion Numeric ,
-        Inventeur  Char (25) ,
+        Inventeur  Char (50) ,
         PRIMARY KEY (IDpotion )
 )ENGINE=InnoDB;
 
@@ -43,12 +21,12 @@ CREATE TABLE Potion(
 #------------------------------------------------------------
 # Table: Onguent
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Onguent;
 CREATE TABLE Onguent(
         IDonguent   int (11) Auto_increment  NOT NULL ,
-        NomOnguent  Char (25) ,
+        NomOnguent  Char (50) ,
         PrixOnguent Numeric ,
-        Inventeur   Char (25) ,
+        Inventeur   Char (50) ,
         PRIMARY KEY (IDonguent )
 )ENGINE=InnoDB;
 
@@ -56,10 +34,10 @@ CREATE TABLE Onguent(
 #------------------------------------------------------------
 # Table: Ingredient
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Ingredient;
 CREATE TABLE Ingredient(
         IDingredient   int (11) Auto_increment  NOT NULL ,
-        NomIngredient  Char (25) ,
+        NomIngredient  Char (50) ,
         Fraicheur      Numeric ,
         PrixIngredient Numeric ,
         PRIMARY KEY (IDingredient )
@@ -69,19 +47,19 @@ CREATE TABLE Ingredient(
 #------------------------------------------------------------
 # Table: Stock
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Stock;
 CREATE TABLE Stock(
         IDStock            int (11) Auto_increment  NOT NULL ,
-        NomIngredient      Char (25) ,
+        NomIngredient      Char (50) ,
         Fraicheur          Numeric ,
         QuantiteIngredient Numeric ,
-        TypeRecipient      Char (25) ,
-        QuantiteRecipent   Numeric ,
-        NomPotion          Char (25) ,
+        TypeRecipient      Char (50) ,
+        QuantiteRecipient   Numeric ,
+        NomPotion          Char (50) ,
         QuantitePotion     Numeric ,
-        NomOnguent         Char (25) ,
+        NomOnguent         Char (50) ,
         QuantiteOnguent    Numeric ,
-        IDrecipent         Int ,
+        IDRecipient         Int ,
         IDpotion           Int ,
         IDingredient       Int ,
         IDonguent          Int ,
@@ -92,21 +70,21 @@ CREATE TABLE Stock(
 #------------------------------------------------------------
 # Table: Commande
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Commande;
 CREATE TABLE Commande(
         IDcommande          int (11) Auto_increment  NOT NULL ,
-        NomClient           Char (25) ,
-        PrenomClient        Char (25) ,
-        AdresseClient       Char (25) ,
-        NomPotion           Char (25) ,
-        TypeRecipent        Char (25) ,
+        NomClient           Char (50) ,
+        PrenomClient        Char (50) ,
+        AdresseClient       Char (50) ,
+        NomPotion           Char (50) ,
+        TypeRecipient        Char (50) ,
         QuantitePotion      Numeric ,
-        NomOnguent          Char (25) ,
+        NomOnguent          Char (50) ,
         QuantiteOnguent     Numeric ,
-        NomIngredient       Char (25) ,
-        FraicheurIngredient Char (25) ,
+        NomIngredient       Char (50) ,
+        FraicheurIngredient Char (50) ,
         QuantiteIngredient  Numeric ,
-        StatusCommande      Char (25) ,
+        StatusCommande      Char (50) ,
         PrixTotal           Numeric ,
         IDStock             Int ,
         PRIMARY KEY (IDcommande )
@@ -114,27 +92,27 @@ CREATE TABLE Commande(
 
 
 #------------------------------------------------------------
-# Table: Recipent
+# Table: Recipient
 #------------------------------------------------------------
-
-CREATE TABLE Recipent(
-        IDrecipent   int (11) Auto_increment  NOT NULL ,
-        TypeRecipent Char (25) ,
-        PrixRecipent Numeric ,
+DROP TABLE IF EXISTS Recipient;
+CREATE TABLE Recipient(
+        IDRecipient   int (11) Auto_increment  NOT NULL ,
+        TypeRecipient Char (50) ,
+        PrixRecipient Numeric ,
         Volume       Float ,
-        PRIMARY KEY (IDrecipent )
+        PRIMARY KEY (IDRecipient )
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Cilent
+# Table: client
 #------------------------------------------------------------
-
-CREATE TABLE Cilent(
+DROP TABLE IF EXISTS Client;
+CREATE TABLE Client(
         IDclient      int (11) Auto_increment  NOT NULL ,
-        NomClient     Char (25) ,
-        PrenomClient  Char (25) ,
-        AdresseClient Char (25) ,
+        NomClient     Char (50) ,
+        PrenomClient  Char (50) ,
+        AdresseClient Char (50) ,
         IDcommande    Int ,
         PRIMARY KEY (IDclient )
 )ENGINE=InnoDB;
@@ -143,11 +121,11 @@ CREATE TABLE Cilent(
 #------------------------------------------------------------
 # Table: Fournisseur
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Fournisseur;
 CREATE TABLE Fournisseur(
         IDfournisseur     int (11) Auto_increment  NOT NULL ,
-        NomFournisseur    Char (25) ,
-        IngredientEnvoyer Char (25) ,
+        NomFournisseur    Char (50) ,
+        IngredientEnvoyer Char (50) ,
         DateEnvoi         Date ,
         PRIMARY KEY (IDfournisseur )
 )ENGINE=InnoDB;
@@ -156,7 +134,7 @@ CREATE TABLE Fournisseur(
 #------------------------------------------------------------
 # Table: OnguentIngredient
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS OnguentIngredient;
 CREATE TABLE OnguentIngredient(
         IDingredient Int NOT NULL ,
         IDonguent    Int NOT NULL ,
@@ -167,7 +145,7 @@ CREATE TABLE OnguentIngredient(
 #------------------------------------------------------------
 # Table: PotionIngredient
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS PotionIngredient;
 CREATE TABLE PotionIngredient(
         IDpotion     Int NOT NULL ,
         IDingredient Int NOT NULL ,
@@ -178,19 +156,19 @@ CREATE TABLE PotionIngredient(
 #------------------------------------------------------------
 # Table: Réaprovisionne
 #------------------------------------------------------------
-
+DROP TABLE IF EXISTS Reaprovisionne;
 CREATE TABLE Reaprovisionne(
         IDfournisseur Int NOT NULL ,
         IDStock       Int NOT NULL ,
         PRIMARY KEY (IDfournisseur ,IDStock )
 )ENGINE=InnoDB;
 
-ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDrecipent FOREIGN KEY (IDrecipent) REFERENCES Recipent(IDrecipent);
+ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDRecipient FOREIGN KEY (IDRecipient) REFERENCES Recipient(IDRecipient);
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDpotion FOREIGN KEY (IDpotion) REFERENCES Potion(IDpotion);
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDonguent FOREIGN KEY (IDonguent) REFERENCES Onguent(IDonguent);
 ALTER TABLE Commande ADD CONSTRAINT FK_Commande_IDStock FOREIGN KEY (IDStock) REFERENCES Stock(IDStock);
-ALTER TABLE Cilent ADD CONSTRAINT FK_Cilent_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
+ALTER TABLE client ADD CONSTRAINT FK_client_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
 ALTER TABLE OnguentIngredient ADD CONSTRAINT FK_OnguentIngredient_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
 ALTER TABLE OnguentIngredient ADD CONSTRAINT FK_OnguentIngredient_IDonguent FOREIGN KEY (IDonguent) REFERENCES Onguent(IDonguent);
 ALTER TABLE PotionIngredient ADD CONSTRAINT FK_PotionIngredient_IDpotion FOREIGN KEY (IDpotion) REFERENCES Potion(IDpotion);
