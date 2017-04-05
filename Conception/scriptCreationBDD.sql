@@ -17,6 +17,16 @@ CREATE TABLE Potion(
         PRIMARY KEY (IDpotion )
 )ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS PotionAttente;
+CREATE TABLE PotionAttente(
+        IDpotion   int (11) Auto_increment  NOT NULL ,
+        NomPotion  Char (50) ,
+        Diluant    Char (50) ,
+        Temperature int(100) ,
+        Inventeur  Char (50) ,
+        PRIMARY KEY (IDpotion )
+)ENGINE=InnoDB;
+
 
 #------------------------------------------------------------
 # Table: Onguent
@@ -43,6 +53,18 @@ CREATE TABLE Ingredient(
         PRIMARY KEY (IDingredient )
 )ENGINE=InnoDB;
 
+#------------------------------------------------------------
+# Table: IngredientAttente
+#------------------------------------------------------------
+DROP TABLE IF EXISTS IngredientAttente;
+CREATE TABLE IngredientAttente(
+        IDingredient   int (11) Auto_increment  NOT NULL ,
+        NomPotion      Char (50) ,
+        NomIngredient  Char (50) ,
+        Fraicheur      Numeric ,
+        PrixIngredient Numeric ,
+        PRIMARY KEY (IDingredient )
+)ENGINE=InnoDB;
 
 #------------------------------------------------------------
 # Table: Stock
@@ -151,7 +173,17 @@ CREATE TABLE PotionIngredient(
         IDingredient Int NOT NULL ,
         PRIMARY KEY (IDpotion ,IDingredient )
 )ENGINE=InnoDB;
+ALTER TABLE PotionIngredient ADD CONSTRAINT FK_PotionIngredient_IDpotion FOREIGN KEY (IDpotion) REFERENCES Potion(IDpotion);
+ALTER TABLE PotionIngredient ADD CONSTRAINT FK_PotionIngredient_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
 
+DROP TABLE IF EXISTS PotionIngredientAttente;
+CREATE TABLE PotionIngredientAttente(
+        IDpotion     Int NOT NULL ,
+        IDingredient Int NOT NULL ,
+        PRIMARY KEY (IDpotion ,IDingredient )
+)ENGINE=InnoDB;
+ALTER TABLE PotionIngredientAttente ADD CONSTRAINT FK_PotionIngredientAttente_IDpotion FOREIGN KEY (IDpotion) REFERENCES PotionAttente(IDpotion);
+ALTER TABLE PotionIngredientAttente ADD CONSTRAINT FK_PotionIngredientAttente_IDingredient FOREIGN KEY (IDingredient) REFERENCES IngredientAttente(IDingredient);
 
 #------------------------------------------------------------
 # Table: Réaprovisionne
@@ -171,7 +203,6 @@ ALTER TABLE Commande ADD CONSTRAINT FK_Commande_IDStock FOREIGN KEY (IDStock) RE
 ALTER TABLE client ADD CONSTRAINT FK_client_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
 ALTER TABLE OnguentIngredient ADD CONSTRAINT FK_OnguentIngredient_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
 ALTER TABLE OnguentIngredient ADD CONSTRAINT FK_OnguentIngredient_IDonguent FOREIGN KEY (IDonguent) REFERENCES Onguent(IDonguent);
-ALTER TABLE PotionIngredient ADD CONSTRAINT FK_PotionIngredient_IDpotion FOREIGN KEY (IDpotion) REFERENCES Potion(IDpotion);
-ALTER TABLE PotionIngredient ADD CONSTRAINT FK_PotionIngredient_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
+
 ALTER TABLE Reaprovisionne ADD CONSTRAINT FK_Reaprovisionne_IDfournisseur FOREIGN KEY (IDfournisseur) REFERENCES Fournisseur(IDfournisseur);
 ALTER TABLE Reaprovisionne ADD CONSTRAINT FK_Reaprovisionne_IDStock FOREIGN KEY (IDStock) REFERENCES Stock(IDStock);
