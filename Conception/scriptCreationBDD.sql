@@ -106,7 +106,7 @@ CREATE TABLE Commande(
         NomIngredient       Char (50) ,
         FraicheurIngredient Char (50) ,
         QuantiteIngredient  Numeric ,
-        StatusCommande      Char (50) ,
+        StatutCommande      Char (50) ,
         PrixTotal           Numeric ,
         IDStock             Int ,
         PRIMARY KEY (IDcommande )
@@ -117,7 +117,7 @@ CREATE TABLE Commande(
 # Table: Recipient
 #------------------------------------------------------------
 DROP TABLE IF EXISTS Recipient;
-CREATE TABLE Recipient(
+CREATE TABLE Recipient(²
         IDRecipient   int (11) Auto_increment  NOT NULL ,
         TypeRecipient Char (50) ,
         PrixRecipient Numeric ,
@@ -148,6 +148,7 @@ CREATE TABLE Fournisseur(
         IDfournisseur     int (11) Auto_increment  NOT NULL ,
         NomFournisseur    Char (50) ,
         IngredientEnvoyer Char (50) ,
+        QuantiteIngredient int (11) ,
         DateEnvoi         Date ,
         PRIMARY KEY (IDfournisseur )
 )ENGINE=InnoDB;
