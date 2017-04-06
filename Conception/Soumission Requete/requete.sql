@@ -17,10 +17,11 @@ BEGIN
 	VALUES (Nom_Potion,Nom_Ingredient,val_Fraicheur,val_Prix);
 
 	-- On relie l'ingredient a la potion en fonction du nom que l'on a choisi --
-	INSERT INTO PotionIngredientAttente(IDpotion, IDingredient)
-	SELECT IDpotion,IDingredient
-	FROM potionattente,ingredientattente
-	WHERE potionattente.NomPotion = Nom_Potion AND ingredientattente.NomPot = Nom_Ingredient;
+	INSERT INTO potioningredientattente(IDpotion, IDingredient)
+	SELECT potionattente.IDpotion,ingredientattente.IDingredient
+	FROM potionattente
+	INNER JOIN ingredientattente ON potionattente.NomPotion = ingredientattente.NomPotion
+	WHERE potionattente.NomPotion = Nom_Potion AND ingredientattente.NomPotion = Nom_Ingredient;
 END |
 
 
@@ -35,34 +36,32 @@ BEGIN
 	WHERE potionattente.NomPotion = Nom_Potion;
 
 	-- On recup l'ID de la potion --
-	SELECT IDpotion into @IDpotion from potionattente WHERE potionattente.NomPotion = Nom_Potion;
+	SELECT IDpotion into @IDpotion from potion WHERE potion.NomPotion = Nom_Potion;
 
 	-- Mise a jour du prix --
 	UPDATE potion SET PrixPotion = val_Prix
 	WHERE NomPotion = Nom_Potion;
 
+
 	-- Condition si l'ingredient existe deja --
+
 	IF EXISTS (select * from ingredient,ingredientattente where  ingredient.NomIngredient = ingredientattente.NomIngredient)
 	THEN
-		-- Oui, on lie les ingredients a la potion dans la table potioningredient--
-		INSERT INTO potioningredient(IDpotion, IDingredient)
-		SELECT potion.IDpotion,ingredient.IDingredient
-		FROM potion,ingredient,ingredientattente
-		WHERE potion.NomPotion = Nom_Potion AND ingredientattente.NomPotion = potion.NomPotion;
-
+		SELECT IDclient from client;
+		
 	ELSE
 		-- Non on ajoute l'ingredient dans la table ingredient --
 		INSERT INTO ingredient (NomIngredient,Fraicheur,PrixIngredient) 
-		SELECT NomIngredient, Fraicheur, PrixIngredient
-		FROM ingredientattente
-		WHERE ingredientattente.NomPotion = Nom_Potion;
-		
-		-- On fais la liaison --
-		INSERT INTO potioningredient(IDpotion, IDingredient)
-		SELECT potion.IDpotion,ingredient.IDingredient
-		FROM ingredient,potion,ingredientattente
-		WHERE potion.NomPotion = Nom_Potion AND ingredientattente.NomPotion = potion.NomPotion;
+		VALUES (NomIngredient, Fraicheur, PrixIngredient);
+
 	END IF;
+
+	-- Oui, on lie les ingredients a la potion dans la table potioningredient--
+	INSERT INTO potioningredient(IDpotion, IDingredient)
+	SELECT potion.IDpotion,ingredient.IDingredient
+	FROM ingredient, potion
+	INNER JOIN ingredientattente ON ingredientattente.NomIngredient = ingredient.NomIngredient
+	WHERE potion.IDpotion = @IDpotion;
 
 	-- On supprime les champs utiliser dans la partie attente --
 	DELETE FROM potioningredientattente
@@ -105,6 +104,17 @@ END |
 
 */
 
+	/* 
+		RIGHT JOIN 
+		table source ingredientattente
+
+		Genere requete (insert into)
+		resultat du select = ingredient a ajouter (ce qui existe pas )
+
+		Insert la liste d'ingredient 
+		
+	*/ 
+
 
 DELIMITER |
 DROP PROCEDURE IF EXISTS Ajout_Client |
@@ -114,54 +124,24 @@ BEGIN
 	VALUES (n_NomClient,n_PrenomClient,n_adresse);
 END |
 
-ELIMITER |
+DELIMITER |
 DROP PROCEDURE IF EXISTS Ajout_Commande |
 CREATE PROCEDURE Ajout_Commande(in num_Client int, in n_Potion char(50), in n_Recipient char(50), in n_QuantitePot char(50), in n_Onguent char(50), in n_QuantiteOngc char(50), in n_Ingredient char(50), in n_Fraicheur char(50), in n_Quantiteing char(50))
 BEGIN
-	INSERT INTO Client (IDClient,NomPotion, TypeRecipient, QuantitePotion, NomOnguent, QuantiteOnguent, NomIngredient, FraicheurIngredient, QuantiteIngredient)
+	INSERT INTO Commande (IDClient,NomPotion, TypeRecipient, QuantitePotion, NomOnguent, QuantiteOnguent, NomIngredient, FraicheurIngredient, QuantiteIngredient)
 	VALUES (num_Client,n_Potion,n_Recipient,n_QuantitePot,n_Onguent,n_QuantiteOngc,n_Ingredient,n_Fraicheur,n_Quantiteing);
 	
 	SET @Commande_id  = LAST_INSERT_ID();
 
--- Add a tag 
-INSERT INTO tags (tag_name) VALUES ('tag1');
-SET @tag_id = LAST_INSERT_ID();
--- Now add a tag to the project
-INSERT INTO tags_posts (tag_id, project_id) VALUES (@tag_id, @project_id);
-COMMIT;
+	UPDATE Commande SET  StatutCommande = "En Attente" WHERE @Commande_id = IDcommande ;
 
-	UPDATE Ajout_Commande SET  StatutCommande = "En Attente" WHERE @Commande_id = IDcommande ;
-	UPDATE Ajout_Commande SET PrixTotal = (potion.PrixPotion * (n_QuantitePot + 
+	-- Ajoute les noms en fonction le l'ID user
+	UPDATE Commande SET NomClient = client.NomClient WHERE IDclient = num_Client;
+	UPDATE Commande SET PrenomClient = client.PrenomClient WHERE IDclient = num_Client;
+	UPDATE Commande SET AdresseClient = client.AdresseClient WHERE IDclient = num_Client;
+
+	-- Prix --
+	
 END |
 
-
-DROP TABLE IF EXISTS Client;
-CREATE TABLE Client(
-        IDclient      int (11) Auto_increment  NOT NULL ,
-        NomClient     Char (50) ,
-        PrenomClient  Char (50) ,
-        AdresseClient Char (50) ,
-        IDcommande    Int ,
-        PRIMARY KEY (IDclient )
-)ENGINE=InnoDB;
-
-
-DROP TABLE IF EXISTS Commande;
-CREATE TABLE Commande(
-        IDcommande          int (11) Auto_increment  NOT NULL ,
-        NomClient           Char (50) ,
-        PrenomClient        Char (50) ,
-        AdresseClient       Char (50) ,
-        NomPotion           Char (50) ,
-        TypeRecipient        Char (50) ,
-        QuantitePotion      Numeric ,
-        NomOnguent          Char (50) ,
-        QuantiteOnguent     Numeric ,
-        NomIngredient       Char (50) ,
-        FraicheurIngredient Char (50) ,
-        QuantiteIngredient  Numeric ,
-        StatutCommande      Char (50) ,
-        PrixTotal           Numeric ,
-        IDClient             Int ,
-        PRIMARY KEY (IDcommande )
-)ENGINE=InnoDB;
+call ajout_Commande(1,"Potion","Fiole",3,"",0,"","",0)
