@@ -7,9 +7,11 @@ BEGIN
 	SELECT potion.NomPotion, potion.Temperature
 	FROM potion
 	ORDER BY Temperature;
+	
 	CREATE VIEW Lister_Potions_Vue
 	AS SELECT potion.NomPotion, potion.Temperature
 	FROM potion
-	CREATE USER 'Utilisateur'@'localhost' IDENTIFIED BY 'motdepasse'
+	ORDER BY Temperature;
+
 	GRANT SELECT ON Lister_Potions_Vue TO 'Utilisateur'@'localhost';
 END |

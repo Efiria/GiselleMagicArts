@@ -1,4 +1,8 @@
-﻿-- Rechercher les potions ou les onguents réalisables avec un ingrédient précis.
+﻿-- Créer l'utilisateur.
+
+CREATE USER 'Utilisateur'@'localhost' IDENTIFIED BY 'motdepasse';
+
+-- Rechercher les potions ou les onguents réalisables avec un ingrédient précis.
 
 DELIMITER |
 DROP PROCEDURE IF EXISTS Recherche_Ingredients_Potion |
@@ -9,13 +13,16 @@ BEGIN
 	NATURAL JOIN potioningredient
 	NATURAL JOIN ingredient
 	WHERE ingredient.NomIngredient = Nom_Ingredient;
+	
 	CREATE VIEW Recherche_Ingredients_Potion_Vue
 	AS SELECT potion.NomPotion, ingredient.NomIngredient
-	FROM potion, ingredient
-	CREATE USER 'Utilisateur'@'localhost' IDENTIFIED BY 'motdepasse'
+	FROM potion, ingredient;
+	-- WHERE ingredient.NomIngredient = Nom_Ingredient;
+	
 	GRANT SELECT ON giselleart.Recherche_Ingredients_Potion_Vue TO 'Utilisateur'@'localhost';
 END |
 
+-- ... Onguents.
 
 DELIMITER |
 DROP PROCEDURE IF EXISTS Recherche_Ingredients_Onguent |
@@ -26,9 +33,11 @@ BEGIN
 	NATURAL JOIN onguentingredient
 	NATURAL JOIN ingredient
 	WHERE ingredient.NomIngredient = Nom_Ingredient;
+	
 	CREATE VIEW Recherche_Ingredients_Onguent_Vue
 	AS SELECT onguent.NomOnguent, ingredient.NomIngredient
-	FROM onguent, ingredient
-	CREATE USER 'Utilisateur'@'localhost' IDENTIFIED BY 'motdepasse'
+	FROM onguent, ingredient;
+	-- WHERE ingredient.NomIngredient = Nom_Ingredient;
+
 	GRANT SELECT ON giselleart.Recherche_Ingredients_Onguent_Vue TO 'Utilisateur'@'localhost';
 END |

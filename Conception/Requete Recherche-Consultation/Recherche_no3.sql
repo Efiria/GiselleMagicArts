@@ -7,9 +7,11 @@ BEGIN
 	SELECT potion.NomPotion, potion.Diluant
 	FROM potion
 	WHERE potion.Diluant = Nom_Diluant;
+	
 	CREATE VIEW Recherche_Diluant_Vue
 	AS SELECT potion.NomPotion, potion.Diluant
-	FROM potion
-	CREATE USER 'Utilisateur'@'localhost' IDENTIFIED BY 'motdepasse'
+	FROM potion;
+	-- WHERE potion.Diluant = Nom_Diluant;
+	
 	GRANT SELECT ON giselleart.Recherche_Diluant_Vue TO 'Utilisateur'@'localhost';
 END |

@@ -10,9 +10,12 @@ BEGIN
 	INNER JOIN ingredient ON potioningredient.IDingredient = ingredient.IDingredient
 	WHERE potion.NomPotion = Nom_Potion
 	GROUP BY potion.NomPotion, potion.PrixPotion;
+	
 	CREATE VIEW Comparer_Potions_Vue
 	AS SELECT potion.NomPotion, potion.PrixPotion, ingredient.PrixTotal
-	FROM potion, ingredient
-	CREATE USER 'Utilisateur'@'localhost' IDENTIFIED BY 'motdepasse'
+	FROM potion, ingredientWHERE potion.NomPotion = Nom_Potion
+	-- WHERE potion.NomPotion = Nom_Potion
+	GROUP BY potion.NomPotion, potion.PrixPotion;
+
 	GRANT SELECT ON Comparer_Potions_Vue TO 'Utilisateur'@'localhost';
 END |
