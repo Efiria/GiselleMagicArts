@@ -108,7 +108,7 @@ CREATE TABLE Commande(
         QuantiteIngredient  Numeric ,
         StatutCommande      Char (50) ,
         PrixTotal           Numeric ,
-        IDStock             Int ,
+        IDClient            Int ,
         PRIMARY KEY (IDcommande )
 )ENGINE=InnoDB;
 
@@ -200,8 +200,11 @@ ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDRecipient FOREIGN KEY (IDRecipient) 
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDpotion FOREIGN KEY (IDpotion) REFERENCES Potion(IDpotion);
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
 ALTER TABLE Stock ADD CONSTRAINT FK_Stock_IDonguent FOREIGN KEY (IDonguent) REFERENCES Onguent(IDonguent);
+
 ALTER TABLE Commande ADD CONSTRAINT FK_Commande_IDClient FOREIGN KEY (IDClient) REFERENCES Client(IDClient);
+
 ALTER TABLE client ADD CONSTRAINT FK_client_IDcommande FOREIGN KEY (IDcommande) REFERENCES Commande(IDcommande);
+
 ALTER TABLE OnguentIngredient ADD CONSTRAINT FK_OnguentIngredient_IDingredient FOREIGN KEY (IDingredient) REFERENCES Ingredient(IDingredient);
 ALTER TABLE OnguentIngredient ADD CONSTRAINT FK_OnguentIngredient_IDonguent FOREIGN KEY (IDonguent) REFERENCES Onguent(IDonguent);
 
